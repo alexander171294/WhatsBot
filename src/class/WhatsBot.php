@@ -8,6 +8,7 @@ class WhatsBot extends aWhatsBot implements iWhatsBot
 {
 
 	private $mibot = null;
+	private $no_errors = true;
 
 	public function set_mibot(aMiBot $mibot)
 	{
@@ -40,13 +41,17 @@ class WhatsBot extends aWhatsBot implements iWhatsBot
 
 	public function onStart(&$cancel)
 	{
+		$cancel = $this->no_errors;
 		$this->mibot->onStart($cancel);
 		if($cancel == false)
-			StdIO::ShowMessage('started');
+			StdIO::ShowMessage('Started');
+		if($cancel == true)
+			StdIO::ShowError('Aborted');
 	}
 
 	public function onError($errorMessage)
 	{
+		$this->no_errors = true;
 		$this->mibot->onError($errorMessage);
 		StdIO::ShowError($errorMessage);
 	}

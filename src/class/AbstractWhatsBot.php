@@ -16,39 +16,59 @@ abstract class aWhatsBot
 	// constructor del objeto
 	public function __construct($number, $identity, $password, $nickname = 'WhatsBot', $devmode = false)
 	{
-		// guardamos los datos
-		$this->number = $number;
-		$this->identity = $identity;
-		$this->password = $password;
-		$this->nickname = $nickname;
-		// instanciamos el protocolo de whatsapp
-		$this->object = new WhatsProt($number, $identity, $nickname, $devmode);
-		// seteamos nuestra instancia en la clase caller para recivir las llamadas a estaticas
-		Caller::SetInstance($this);
-		// bindeamos los eventos
-		$this->object->eventManager()->bind('onGetMessage', 'Caller::onGetMessage');
-		$this->object->eventManager()->bind('onGetGroupMessage', 'Caller::onGetGroupMessage');
+		try
+		{
+			// guardamos los datos
+			$this->number = $number;
+			$this->identity = $identity;
+			$this->password = $password;
+			$this->nickname = $nickname;
+			// instanciamos el protocolo de whatsapp
+			$this->object = new WhatsProt($number, $identity, $nickname, $devmode);
+			// seteamos nuestra instancia en la clase caller para recivir las llamadas a estaticas
+			Caller::SetInstance($this);
+			// bindeamos los eventos
+			$this->object->eventManager()->bind('onGetMessage', 'Caller::onGetMessage');
+			$this->object->eventManager()->bind('onGetGroupMessage', 'Caller::onGetGroupMessage');
+		} catch (exception $obj)
+		{
+			$this->onError($obj->getMessage());
+		}
 	}
 
 	// conector
 	public function connect()
 	{
-		// realizamos la conexion
-		$this->object->connect();
-		$this->onConnect();
+		try
+		{
+			// realizamos la conexion
+			$this->object->connect();
+			$this->onConnect();
+		} catch (exception $obj)
+		{
+			$this->onError($obj->getMessage());
+		}
 	}
 
 	// logueo con password
 	public function loguinPassowd()
 	{
-		// logueamos con password
-		$this->object->loginWithPassword($this->password);
-		$this->onLoguin();
+		try
+		{
+			// logueamos con password
+			$this->object->loginWithPassword($this->password);
+			$this->onLoguin();
+		} catch (exception $obj)
+		{
+			$this->onError($obj->getMessage());
+		}
 	}
 
 	// iniciamos el bucle controlador
 	public function Start()
 	{
+		try
+		{	
 			$cancel = false;
 			$this->onStart($cancel);
 			while(!$cancel)
@@ -56,6 +76,10 @@ abstract class aWhatsBot
 				$this->object->pollMessages();
 				usleep(100);
 			}
+		} catch (exception $obj)
+		{
+			$this->onError($obj->getMessage());
+		}
 	}
 
 	// funciones reescribibles

@@ -6,6 +6,9 @@ require('class/StdIO/iStdIO.php');
 
 class WhatsBot extends aWhatsBot implements iWhatsBot
 {
+
+	// EVENTS //
+	
 	public function onGetMessage($Number, $From, $MsgID, $Type, $Time, $Name, $Message)
 	{
 		// quitamos la basura del from

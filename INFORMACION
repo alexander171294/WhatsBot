@@ -1,0 +1,33 @@
+WHATS BOT REMAKE BY ALEXANDER171294
+                       Version 1, 31 Julio 2014
+
+  WhatsBot es un bot basado en WhatsAPI de venomous0x https://github.com/venomous0x/WhatsAPI/ diseñado
+como plataforma para sostener un bot personalizado creado a medida por el usuario, dicho objetivo
+obligó a la creación de una plataforma abstracta diseñada para soportar cualquier bot programado
+en php diseñado en POO que se ajuste al standard de WhatsBotRemake.
+
+  1. Configuracion.
+
+  Existe un bot de ejemplo creado en la carpeta Mibot para ilustración del usuario, no es necesario
+mantener esta carpeta como primaria para el bot, se puede editar el archivo bot.json para cargar tu bot
+desde otra carpeta diferente.
+
+  2. Dependencias.
+
+  Es necesario para que el bot funcione que la clase sea una extension de aMiBot (clase abstracta
+diseñada con el fin de preservar la estructura minima de un bot que pueda ser soportado en esta
+plataforma), además para ser cargado debe estar configurado en bot.json
+  Puede ver los detalles de la clase abstracta en /src/class/aMiBot.php, dicha clase es cargada 
+automaticamente por la plataforma de WhatsBot.
+
+  3. Limitaciones.
+
+  Dentro de la estructura básica planteada por la clase abstracta, usted puede programar el bot a 
+su gusto, utilizando cualquier herramienta de php, tenga en cuenta que dentro de la carpeta mibot o la
+carpeta que usted elija, se generará un microambiente para que usted cree nuevos archivos, clases y otras
+necesidades que su bot requiera.
+  
+  4. Funcionamiento.
+
+  Aquel usuario del bot, unicamente debe ejecutar start.php desde una consola con el interprete de php.
+  Recuerde que esta plataforma fue diseñada para el modo cli de PHP (Command Line Interface).

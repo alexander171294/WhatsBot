@@ -2,5 +2,5 @@
 
 function generateIdentity($number, $salt)
 {
-	return strtolower(urlencode(sha1(strrev($number.$salt),true)));
+	return strtolower(sha1(strrev($number.$salt),true));
 }

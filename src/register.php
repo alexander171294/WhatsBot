@@ -1,6 +1,12 @@
 <?php
 
 // cargamos la configuracion
+$cbot = get_object_vars(json_decode(file_get_contents('bot.json')));
+
+require($cbot['BotMain']);
+$mibot = new $cbot['ClassName']();
+
+// cargamos la configuracion
 $config = get_object_vars(json_decode(file_get_contents('config.json')));
 
 // seteamos configuracion base
@@ -14,6 +20,9 @@ $config = array(
 // creamos la instancia
 $bot = new WhatsBot($config['Number'], $config['Identity'], $config['Password'], $config['Nickname'], $config['DevMode']);
 
+// seteamos la instancia del controlador del bot
+$bot->set_mibot($mibot);
+
 // enviamos codigo al celular
 $bot->codeRequest('AR');
 
@@ -23,10 +32,12 @@ $line = StdIO::InputLine();
 
 // password
 $obj = $bot->codeRegister($line);
-$config['Password'] = $obj->pw;
+$config['Password'] = $obj['pw'];
 
 // generamos el identity
 $config['Identity'] =  generateIdentity($config['Number'],$config['Password']);
+
+var_dump($config);
 
 StdIO::ShowMessage('Guardando configuracion');
 file_put_contents('config.json', json_encode($config));

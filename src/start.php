@@ -18,8 +18,6 @@ while(!$exit)
 	StdIO::ShowQuestion('Por favor seleccione una opcion');
 	$option = StdIO::InputLine();
 
-	var_dump($option);
-
 	if(strtolower($option)=='i')
 		include('bot.php');
 	if(strtolower($option)=='r')

@@ -1,12 +1,18 @@
 <?php
 
+function generateIdentity($number, $salt)
+{
+	return strtolower(urlencode(sha1(strrev($number.$salt),true)));
+}
+
 // cargamos la configuracion
 $config = get_object_vars(json_decode(file_get_contents('config.json')));
 
 // seteamos configuracion base
 $config = array(
+				'Number' => $config['Number'],
 				'Identity' => '',
-				'Password' => 'AFBOT4650',
+				'Password' => '',
 				'Nickname' => 'WhatsBot',
 				'DevMode' => false);
 
@@ -20,8 +26,12 @@ $bot->codeRequest();
 StdIO::ShowQuestion('Ingrese el codigo enviado al celular');
 $line = StdIO::InputLine();
 
-$bot->codeRegister($line);
-$config['Identity'] = $line;
+// password
+$obj = $bot->codeRegister($line);
+$config['Password'] = $obj->pw;
+
+// generamos el identity
+$config['Identity'] =  generateIdentity($config['Number'],$config['Password']);
 
 StdIO::ShowMessage('Guardando configuracion');
 file_put_contents('config.json', json_encode($config));

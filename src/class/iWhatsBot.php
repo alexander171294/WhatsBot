@@ -33,4 +33,7 @@ interface iWhatsBot
 	public function onCodeSend();
 	// evento de respuesta de codeRegister();
 	public function onCodeRegister();
+
+	// seteamos amibot
+	public function set_mibot(aMiBot $mibot);
 }

@@ -2,6 +2,7 @@
 
 $exit = false;
 // requerimos whatsbot
+require('class/MiBot/aMiBot.php');
 require('class/iWhatsBot.php');
 require('dependencias/registro.php');
 

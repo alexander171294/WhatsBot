@@ -17,7 +17,7 @@ desde otra carpeta diferente.
   Es necesario para que el bot funcione que la clase sea una extension de aMiBot (clase abstracta
 diseñada con el fin de preservar la estructura minima de un bot que pueda ser soportado en esta
 plataforma), además para ser cargado debe estar configurado en bot.json
-  Puede ver los detalles de la clase abstracta en /src/class/aMiBot.php, dicha clase es cargada 
+  Puede ver los detalles de la clase abstracta en /src/class/mibot/aMiBot.php, dicha clase es cargada 
 automaticamente por la plataforma de WhatsBot.
 
   3. Limitaciones.

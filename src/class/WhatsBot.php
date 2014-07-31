@@ -7,17 +7,25 @@ require('class/StdIO/iStdIO.php');
 class WhatsBot extends aWhatsBot implements iWhatsBot
 {
 
+	private $mibot = null;
+
+	public function set_mibot(aMiBot $mibot)
+	{
+		$this->mibot = $mibot;
+	}
+
 	// EVENTS //
-	
+
 	public function onGetMessage($Number, $From, $MsgID, $Type, $Time, $Name, $Message)
 	{
 		// quitamos la basura del from
 		$From = str_replace('@s.whatsapp.net', '', $From);
+		$this->mibot->onGetMessage($Number, $Form, $MsgID, $Type, $Time, $Name, $Message);
 	}
 	
 	public function onGetGroupMessage($Number, $From, $Author, $MsgID, $Type, $Time, $Name, $Message)
 	{
-		
+		$this->mibot->onGetGroupMessage($Number, $From, $Author, $MsgID, $Type, $Time, $Name, $Message);
 	}
 
 	public function onConnect()
@@ -32,24 +40,30 @@ class WhatsBot extends aWhatsBot implements iWhatsBot
 
 	public function onStart(&$cancel)
 	{
-		// cancelar?
-		// $cancel = true;
-		StdIO::ShowMessage('started');
+		$this->mibot->onStart($cancel);
+		if($cancel == false)
+			StdIO::ShowMessage('started');
 	}
 
 	public function onError($errorMessage)
 	{
+		$this->mibot->onError($errorMessage);
 		StdIO::ShowError($errorMessage);
 	}
 
 	public function onCodeSend()
 	{
-		StdIO::ShowMessage('Codigo enviado el celular');
+		StdIO::ShowMessage('Codigo enviado al celular');
 	}
 
 	public function onCodeRegister()
 	{
 		StdIO::ShowMessage('Codigo registrado correctamente');
+	}
+
+	public function onSendMessage($target, $message)
+	{
+		$this->object->sendMessage($target, $message);
 	}
 
 }

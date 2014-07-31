@@ -2,7 +2,7 @@
 
 // requerimientos
 require('class/AbstractWhatsBot.php');
-require('class/ErrorCache/iErrorCache.php');
+require('class/StdIO/iStdIO.php');
 
 class WhatsBot extends aWhatsBot implements iWhatsBot
 {
@@ -19,34 +19,34 @@ class WhatsBot extends aWhatsBot implements iWhatsBot
 
 	public function onConnect()
 	{
-		ErrorCache::ShowMessage('Connected and hello world :)');
+		StdIO::ShowMessage('Connected and hello world :)');
 	}
 
 	public function onLogin()
 	{
-		ErrorCache::ShowMessage('logged');
+		StdIO::ShowMessage('logged');
 	}
 
 	public function onStart(&$cancel)
 	{
 		// cancelar?
 		// $cancel = true;
-		ErrorCache::ShowMessage('started');
+		StdIO::ShowMessage('started');
 	}
 
 	public function onError($errorMessage)
 	{
-		ErrorCache::ShowError($errorMessage);
+		StdIO::ShowError($errorMessage);
 	}
 
 	public function onCodeSend()
 	{
-		ErrorCache::ShowMessage('Codigo enviado el celular');
+		StdIO::ShowMessage('Codigo enviado el celular');
 	}
 
 	public function onCodeRegister()
 	{
-		ErrorCache::ShowMessage('Codigo registrado correctamente');
+		StdIO::ShowMessage('Codigo registrado correctamente');
 	}
 
 }

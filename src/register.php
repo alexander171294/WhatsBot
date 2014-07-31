@@ -17,11 +17,11 @@ $bot = new WhatsBot($config['Number'], $config['Identity'], $config['Password'],
 $bot->codeRequest();
 
 // solicitamos que ingrese el code
-ErrorCache::ShowQuestion('Ingrese el codigo enviado al celular');
-$line = ErrorCache::InputLine();
+StdIO::ShowQuestion('Ingrese el codigo enviado al celular');
+$line = StdIO::InputLine();
 
 $bot->codeRegister($line);
 $config['Identity'] = $line;
 
-ErrorCache::ShowMessage('Guardando configuracion');
+StdIO::ShowMessage('Guardando configuracion');
 file_put_contents('config.json', json_encode($config));

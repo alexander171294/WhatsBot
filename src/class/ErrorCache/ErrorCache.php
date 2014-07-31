@@ -1,7 +1,7 @@
 <?php
 
 // Sistema de Logueo de mensajes
-static Class ErrorCache implements iErrorCache
+Class ErrorCache implements iErrorCache
 {
 	static private $ErrorInformer = '[!!!]';
 	static private $Informer = '[*]';

@@ -16,5 +16,8 @@ $bot = new WhatsBot($config['Number'], $config['Identity'], $config['Password'],
 // conectamos 
 $bot->connect();
 
+// logueamos
+$bot->loguinPassowd();
+
 // iniciamos el bucle
 $bot->start();

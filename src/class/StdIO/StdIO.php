@@ -7,6 +7,11 @@ Class StdIO implements iStdIO
 	static private $Informer = '[*]';
 	static private $Question = '[?]';
 
+	static public function show($message)
+	{
+		echo $message."\n";
+	}
+
 	static public function showError($message)
 	{
 		echo self::$ErrorInformer.' '.$message."\n";

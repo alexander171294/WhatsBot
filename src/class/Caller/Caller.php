@@ -8,7 +8,7 @@ class Caller implements iCaller
 {
 	private static $instance;	
 
-	public static SetInstance($obj)
+	public static function SetInstance($obj)
 	{
 		self::$instance = $obj;
 	}

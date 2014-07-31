@@ -4,5 +4,5 @@ require('Caller.php');
 
 interface iCaller
 {
-	public static SetInstance($obj);
+	public static function SetInstance($obj);
 }

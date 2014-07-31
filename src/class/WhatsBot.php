@@ -1,7 +1,7 @@
 <?php
 
 // requerimientos
-require('AbstractWhatsBot.php');
+require('class/AbstractWhatsBot.php');
 
 class WhatsBot extends aWhatsBot implements iWhatsBot
 {
@@ -18,8 +18,26 @@ class WhatsBot extends aWhatsBot implements iWhatsBot
 
 	public function onConnect()
 	{
-		echo 'Connected and hello world :)'
+		echo 'Connected and hello world :)';
 	}
+
+	public function onLoguin()
+	{
+		echo 'logged';
+	}
+
+	public function onStart(&$cancel)
+	{
+		// cancelar?
+		// $cancel = true;
+		echo 'started';
+	}
+
+	public function onError($errorMessage)
+	{
+		echo 'Error: '.$errorMessage;
+	}
+
 }
 
 ?>

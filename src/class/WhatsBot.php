@@ -2,6 +2,7 @@
 
 // requerimientos
 require('class/AbstractWhatsBot.php');
+require('class/ErrorCache/iErrorCache.php');
 
 class WhatsBot extends aWhatsBot implements iWhatsBot
 {
@@ -18,24 +19,24 @@ class WhatsBot extends aWhatsBot implements iWhatsBot
 
 	public function onConnect()
 	{
-		echo 'Connected and hello world :)';
+		ErrorCache::ShowMessage('Connected and hello world :)');
 	}
 
 	public function onLoguin()
 	{
-		echo 'logged';
+		ErrorCache::ShowMessage('logged');
 	}
 
 	public function onStart(&$cancel)
 	{
 		// cancelar?
 		// $cancel = true;
-		echo 'started';
+		ErrorCache::ShowMessage('started');
 	}
 
 	public function onError($errorMessage)
 	{
-		echo 'Error: '.$errorMessage;
+		ErrorCache::ShowError($errorMessage);
 	}
 
 }

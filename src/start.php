@@ -3,6 +3,7 @@
 $exit = false;
 // requerimos whatsbot
 require('class/iWhatsBot.php');
+require('dependencias/registro.php');
 
 while(!$exit)
 {

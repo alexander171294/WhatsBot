@@ -82,11 +82,11 @@ abstract class aWhatsBot
 		}
 	}
 
-	public function codeRequest()
+	public function codeRequest($cc)
 	{
 		try
 		{
-			$this->object->codeRequest('sms');
+			$this->object->codeRequest('sms', $cc);
 			$this->onCodeSend();
 		} catch (exception $obj)
 		{

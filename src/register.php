@@ -1,10 +1,5 @@
 <?php
 
-function generateIdentity($number, $salt)
-{
-	return strtolower(urlencode(sha1(strrev($number.$salt),true)));
-}
-
 // cargamos la configuracion
 $config = get_object_vars(json_decode(file_get_contents('config.json')));
 
@@ -20,7 +15,7 @@ $config = array(
 $bot = new WhatsBot($config['Number'], $config['Identity'], $config['Password'], $config['Nickname'], $config['DevMode']);
 
 // enviamos codigo al celular
-$bot->codeRequest();
+$bot->codeRequest('AR');
 
 // solicitamos que ingrese el code
 StdIO::ShowQuestion('Ingrese el codigo enviado al celular');

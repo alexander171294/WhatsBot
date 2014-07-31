@@ -17,7 +17,7 @@ interface iWhatsBot
 	public function Start();
 
 	// request code
-	public function codeRequest();
+	public function codeRequest($cc);
 
 	// registrar el codigo recibido
 	public function codeRegister($code);

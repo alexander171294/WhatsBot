@@ -11,7 +11,7 @@ interface iWhatsBot
 	public function connect();
 
 	// loginPassword
-	public function loginPassowd()
+	public function loginPasswd();
 
 	// funciona para iniciar el bucle infinito :)
 	public function Start();

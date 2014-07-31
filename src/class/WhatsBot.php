@@ -22,7 +22,7 @@ class WhatsBot extends aWhatsBot implements iWhatsBot
 		ErrorCache::ShowMessage('Connected and hello world :)');
 	}
 
-	public function onLoguin()
+	public function onLogin()
 	{
 		ErrorCache::ShowMessage('logged');
 	}
@@ -39,7 +39,7 @@ class WhatsBot extends aWhatsBot implements iWhatsBot
 		ErrorCache::ShowError($errorMessage);
 	}
 
-	public function onCodeRequest()
+	public function onCodeSend()
 	{
 		ErrorCache::ShowMessage('Codigo enviado el celular');
 	}

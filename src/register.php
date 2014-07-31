@@ -8,9 +8,8 @@ $config = get_object_vars(json_decode(file_get_contents('config.json')));
 
 // seteamos configuracion base
 $config = array(
-				'Number' => '',
 				'Identity' => '',
-				'Password' => '',
+				'Password' => 'AFBOT4650',
 				'Nickname' => 'WhatsBot',
 				'DevMode' => false);
 

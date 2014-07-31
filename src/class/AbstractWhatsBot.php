@@ -51,7 +51,7 @@ abstract class aWhatsBot
 	}
 
 	// logueo con password
-	public function loginPassowd()
+	public function loginPasswd()
 	{
 		try
 		{
@@ -114,7 +114,7 @@ abstract class aWhatsBot
 	// funcion receptora del evento connect
 	abstract public function onConnect();
 	// funcion receptora del evento loguin
-	abstract public function onLoguin();
+	abstract public function onLogin();
 	// funcion receptora del evento start
 	abstract public function onStart(&$cancel);
 	// funcion receptora del evento start

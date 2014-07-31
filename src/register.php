@@ -1,8 +1,5 @@
 <?php
 
-// requerimos whatsbot
-require('class/iWhatsBot.php');
-
 // cargamos la configuracion
 $config = get_object_vars(json_decode(file_get_contents('config.json')));
 
@@ -21,7 +18,7 @@ $bot->codeRequest();
 
 // solicitamos que ingrese el code
 ErrorCache::ShowQuestion('Ingrese el codigo enviado al celular');
-$line = trim(fgets(STDIN));
+$line = ErrorCache::InputLine();
 
 $bot->codeRegister($line);
 $config['Identity'] = $line;

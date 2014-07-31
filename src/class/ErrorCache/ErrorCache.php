@@ -21,4 +21,9 @@ Class ErrorCache implements iErrorCache
 	{
 		echo self::$Question.' '.$message."\n";
 	}
+
+	static public function InputLine()
+	{
+		return trim(fgets(STDIN));
+	}
 }

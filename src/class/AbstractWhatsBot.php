@@ -1,10 +1,10 @@
 <?php
 
 // requerimientos
-require_once('api/whatsprot.class.php');
-require_once('api/class/Caller/iCaller.php');
+require('api/whatsprot.class.php');
+require('api/class/Caller/iCaller.php');
 
-abstract class WhatsBot implements iWhatsBot
+abstract class aWhatsBot
 {
 	private $number = 0;
 	private $identity = '';
@@ -25,6 +25,7 @@ abstract class WhatsBot implements iWhatsBot
 		// bindeamos los eventos
 		$this->object->eventManager()->bind('onGetMessage', 'Caller::onGetMessage');
 		$this->object->eventManager()->bind('onGetGroupMessage', 'Caller::onGetGroupMessage');
+		$this->onConnect();
 	}
 
 	public function Start()
@@ -43,6 +44,8 @@ abstract class WhatsBot implements iWhatsBot
 		}
 	}
 
+	// funciones reescribibles
 	public function onGetMessage($Number, $From, $MsgID, $Type, $Time, $Name, $Message);
 	public function onGetGroupMessage($Number, $From, $Author, $MsgID, $Type, $Time, $Name, $Message);
+	public function onConnect();
 }

@@ -51,13 +51,13 @@ abstract class aWhatsBot
 	}
 
 	// logueo con password
-	public function loguinPassowd()
+	public function loginPassowd()
 	{
 		try
 		{
 			// logueamos con password
 			$this->object->loginWithPassword($this->password);
-			$this->onLoguin();
+			$this->onLogin();
 		} catch (exception $obj)
 		{
 			$this->onError($obj->getMessage());
@@ -82,6 +82,30 @@ abstract class aWhatsBot
 		}
 	}
 
+	public function codeRequest()
+	{
+		try
+		{
+			$this->object->codeRequest('sms');
+			$this->onCodeSend();
+		} catch (exception $obj)
+		{
+			$this->onError($obj->getMessage());
+		}		
+	}
+
+	public function codeRegister($code)
+	{
+		try
+		{
+			$this->object->codeRegister($code);
+			$this->onCodeRegister();
+		} catch (exception $obj)
+		{
+			$this->onError($obj->getMessage());
+		}
+	}
+
 	// funciones reescribibles
 	// funcion receptora de mensajes
 	abstract public function onGetMessage($Number, $From, $MsgID, $Type, $Time, $Name, $Message);
@@ -95,4 +119,8 @@ abstract class aWhatsBot
 	abstract public function onStart(&$cancel);
 	// funcion receptora del evento start
 	abstract public function onError($errorMessage);
+	// funcion receptora del evento loguin
+	abstract public function onCodeSend();
+	// funcion receptora del evento loguin
+	abstract public function onCodeRegister();
 }

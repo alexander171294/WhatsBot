@@ -39,6 +39,16 @@ class WhatsBot extends aWhatsBot implements iWhatsBot
 		ErrorCache::ShowError($errorMessage);
 	}
 
+	public function onCodeRequest()
+	{
+		ErrorCache::ShowMessage('Codigo enviado el celular');
+	}
+
+	public function onCodeRegister()
+	{
+		ErrorCache::ShowMessage('Codigo registrado correctamente');
+	}
+
 }
 
 ?>

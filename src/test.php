@@ -4,7 +4,7 @@ require('class/iWhatsBot.php');
 
 // cargar luego desde json
 $config = array(
-				'Number' => '0',
+				'Number' => '2494309105',
 				'Identity' => '',
 				'Password' => '',
 				'Nickname' => 'WhatsBot',
@@ -17,7 +17,7 @@ $bot = new WhatsBot($config['Number'], $config['Identity'], $config['Password'],
 $bot->connect();
 
 // logueamos
-$bot->loguinPassowd();
+$bot->loginPassowd();
 
 // iniciamos el bucle
 $bot->start();

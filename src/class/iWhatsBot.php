@@ -10,14 +10,27 @@ interface iWhatsBot
 	// funcion para conectarse
 	public function connect();
 
+	// loginPassword
+	public function loginPassowd()
+
 	// funciona para iniciar el bucle infinito :)
 	public function Start();
+
+	// request code
+	public function codeRequest();
+
+	// registrar el codigo recibido
+	public function codeRegister($code);
 
 	// funciones receptoras de eventos
 	public function onGetMessage($Number, $From, $MsgID, $Type, $Time, $Name, $Message);
 	public function onGetGroupMessage($Number, $From, $Author, $MsgID, $Type, $Time, $Name, $Message);
 	public function onConnect();
-	public function onLoguin();
+	public function onLogin();
 	public function onStart(&$cancel);
 	public function onError($errorMessage);
+	// evento de respuesta de codeRequest();
+	public function onCodeSend();
+	// evento de respuesta de codeRegister();
+	public function onCodeRegister();
 }

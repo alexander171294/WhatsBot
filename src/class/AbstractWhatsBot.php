@@ -98,8 +98,8 @@ abstract class aWhatsBot
 	{
 		try
 		{
-			$this->object->codeRegister($code);
 			$this->onCodeRegister();
+			return $this->object->codeRegister($code);
 		} catch (exception $obj)
 		{
 			$this->onError($obj->getMessage());

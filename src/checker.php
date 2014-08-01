@@ -19,21 +19,9 @@ $bot = new WhatsBot($config['Number'], $config['Identity'], $config['Password'],
 // seteamos la instancia del controlador del bot
 $bot->set_mibot($mibot);
 
-// enviamos codigo al celular
-$bot->codeRequest('AR');
+// creamos identify
+$id = urlencode(sha1(generateIdentity($config['Number'], null),true));
 
-// solicitamos que ingrese el code
-StdIO::ShowQuestion('Ingrese el codigo enviado al celular');
-$line = StdIO::InputLine();
+$pw = get_pw($config['Number'],$id, 'US');
 
-// password
-$obj = $bot->codeRegister($line);
-$config['Password'] = $obj['pw'];
-
-// generamos el identity
-$config['Identity'] =  generateIdentity($config['Number'],$config['Password']);
-
-var_dump($config);var_dump($obj);
-
-StdIO::ShowMessage('Guardando configuracion');
-file_put_contents('config.json', json_encode($config));
+var_dump($pw);
